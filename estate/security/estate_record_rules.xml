@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Agent rule: only own properties or those without salesperson -->
+    <record id="estate_property_agent_rule" model="ir.rule">
+        <field name="name">Agent: only own or no salesperson</field>
+        <field name="model_id" ref="model_estate_property"/>
+        <field name="groups" eval="[(4, ref('estate.estate_group_user'))]"/>
+        <field name="domain_force">[('salesperson_id', 'in', [user.id, False])]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>   <!-- agents cannot delete anyway -->
+    </record>
+
+    <!-- Multi-company rule: global, restricts properties to user's allowed companies -->
+    <record id="estate_property_company_rule" model="ir.rule">
+        <field name="name">Multi-company: only allowed companies</field>
+        <field name="model_id" ref="model_estate_property"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+</odoo>

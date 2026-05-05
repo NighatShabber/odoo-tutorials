@@ -1,20 +1,18 @@
-# -*- coding: utf-8 -*-
 {
     'name': "Real Estate",
-
-    'summary': """
-        Starting module for "Master the Odoo web framework, chapter 1: Build a Clicker game"
-    """,
-
-    'description': """
-        Starting module for "Master the Odoo web framework, chapter 1: Build a Clicker game"
-    """,
-
+    'summary': "Real Estate Management Module",
+    'description': "Complete real estate module for property management.",
     'author': "Nighat Shabbir",
-    'category': 'Rea estate',
+    'category': 'Real Estate/Brokerage',
     'version': '0.1',
     'application': True,
     'installable': True,
-    'depends': ['base', ],
-    'license': 'AGPL-3'
+    'depends': ['base'],
+    'data': [
+        'security/ir.model.access.csv',
+        'security/security.xml',
+        'security/estate_record_rules.xml',
+        'views/estate_property_views.xml',
+    ],
+    'license': 'AGPL-3',
 }
